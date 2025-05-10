@@ -64,7 +64,7 @@ function verHistorial() {
 // Función para salir
 function salir() {
     console.log("Historial completo:", history);
-    alert("¡Hasta luego! Revise la consola para ver el historial completo.");
+    alert("Saliste");
 }
 
 // Iniciar la aplicación

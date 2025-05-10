@@ -1,8 +1,31 @@
+const cambio = 1000; //Dolar
 
-let menu = prompt(" 1) Divisa  2) Salir");
+const history = {}
 
-if (menu === 1){
 
-}else{
-    prompt("Usted salio del menu")
+function principal() {
+    
+    let opcion;
+
+    do {
+        opcion = prompt(
+            "Conversor de divisas"+
+            "1. Convertir Peso a Dolar"+
+            "2. Salir "+
+            "Seleccione algunas de las opciones"
+            );
+            switch(opcion) {
+
+
+             }
+
+
+    }
+
+
+
+
+
+
+
 }

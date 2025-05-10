@@ -1,57 +1,72 @@
-const cambio = 1000; //Valor del Dolar
+const cambio = 1000; // Valor del Dolar
+const history = [];
 
-const history = []
-// -----------------------------paso 1: realizar la funcion del menu----------------------------------------
+// Función principal del menú
 function menu() {
-    // Prompt se le pregunta al usuario
     const opcion = prompt(
+        "1. Convertir Pesos a Dolar\n" +
+        "2. Ver historial\n" +  // Agregué opción de historial
+        "3. Salir\n\n" +
+        "Seleccione una opción:"
+    );
 
-        "1. Convertir Pesos a Dolar"+
-        "  //  "+
-        "2. Salir"
-    );    
-
-    //Switch para que ingrese el valor de opcion
     switch (opcion) {
         case "1":
-    
             convertir();
             break;
-    
         case "2":
+            verHistorial();
+            break;
+        case "3":
             salir();
             break;
-    
         default:
-            alert("Opcion no valida");
+            alert("Opción no válida");
             menu();
-    };
-};
-menu();
-//---------------------------------Este es el paso 2 se pide el monto a convertir-------------------------------------
-function conversion() {
-    const input = prompt ("Ingrese su dinero en pesos");
-
-    const montoPeso = parseFloat(input); //ParseFloat para que el monto sea solamente numerico
+    }
 }
-/// paso 3 La operacion de convercion
-const montoUsd = montoPeso / cambio;
 
-const operation = {
+// Funsion de conversión
+function convertir() {
+    const input = prompt("Ingrese su dinero en pesos:");
+    const montoPeso = parseFloat(input);
+
+    const montoUsd = montoPeso / cambio;
+
+    const operation = {
         date: new Date().toLocaleString(),
         from: "ARS",
         to: "USD",
         montoPeso: montoPeso,
-        montoUsd: montoUsd.toFixed(2), 
+        montoUsd: montoUsd,
         rate: cambio
-};
-//---------------------------Esto es para guardar la conversion al array de history
-history.push(operation); 
+    };
 
-    
-    alert(
-        `✅ ${montoPeso} ARS = ${montoUsd.toFixed(2)} USD\n` +
-        `(Tasa: 1 USD = ${EXCHANGE_RATE} ARS)`
-    );
+    history.push(operation);
 
+    alert(`${montoPeso} ARS = ${montoUsd.toFixed(2)} USD\n(Tasa: 1 USD = ${cambio} ARS)`);
     menu();
+}
+
+function verHistorial() {
+    if (history.length === 0) {
+        alert("No hay operaciones registradas");
+    } else {
+        let historialTexto = "Historial de conversiones:\n\n";
+        history.forEach((op, index) => {
+            historialTexto += `${index + 1}. ${op.date} - ${op.montoPeso} ARS → ${op.montoUsd} USD\n`;
+        });
+        alert(historialTexto);
+    }
+    menu();
+}
+
+// Función para salir
+function salir() {
+    console.log("Historial completo:", history);
+    alert("¡Hasta luego! Revise la consola para ver el historial completo.");
+}
+
+// Iniciar la aplicación
+menu();
+

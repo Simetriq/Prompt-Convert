@@ -1,31 +1,30 @@
-const cambio = 1000; //Dolar
+const cambio = 1000; //Valor del Dolar
 
-const history = {}
+const history = []
 
+function menu() {
+    const opcion = prompt(
 
-function principal() {
+        "1. Convertir Pesos a Dolar"+
+        "  //  "+
+        "2. Salir"
+    );    
+
     
-    let opcion;
+    switch (opcion) {
+        case "1":
+    
+            convertir();
+            break;
+    
+        case "2":
+            salir();
+            break;
+    
+        default:
+            alert("Opcion no valida");
+            menu();
+    };
+};
 
-    do {
-        opcion = prompt(
-            "Conversor de divisas"+
-            "1. Convertir Peso a Dolar"+
-            "2. Salir "+
-            "Seleccione algunas de las opciones"
-            );
-            switch(opcion) {
-
-
-             }
-
-
-    }
-
-
-
-
-
-
-
-}
+menu();
